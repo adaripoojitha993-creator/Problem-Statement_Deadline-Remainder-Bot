@@ -1,4 +1,4 @@
-🎯 Project Overview
+🎯 Project Overview - 
 The Deadline Reminder Bot is designed to help students avoid missing assignment or project deadlines. It acts as a personal assistant that tracks tasks, sends timely reminders, and integrates with platforms students already use (like WhatsApp, email, or a web app).
 
 🛠️ Core Features
