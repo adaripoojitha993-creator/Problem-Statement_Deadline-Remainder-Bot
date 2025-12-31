@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deadline Reminder Bot</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>📚 Deadline Reminder Bot</h1>
+    <p>Stay on top of assignments with smart reminders</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Add Task</h2>
+      <form id="task-form">
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="subject" placeholder="Subject">
+        <input type="datetime-local" id="due_date" required>
+        <select id="priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+        <textarea id="notes" placeholder="Notes"></textarea>
+        <button type="submit">➕ Add Task</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Upcoming Tasks</h2>
+      <div class="progress-container">
+        <div id="progress-bar"></div>
+      </div>
+      <p id="progress-text"></p>
+
+      <div id="tasks"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>© 2025 Deadline Reminder Bot</small>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <form id="taskForm">
+  <input type="text" id="title" placeholder="Title" required />
+  <input type="date" id="dueDate" required />
+  <button type="submit">Add Task</button>
+</form>
+
+<script>
+document.getElementById("taskForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const task = {
+    title: document.getElementById("title").value,
+    due_date: document.getElementById("dueDate").value,
+  };
+
+  const res = await fetch("http://localhost:5000/api/tasks", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(task),
+  });
+
+  const data = await res.json();
+  console.log("Created task:", data);
+});
+</script>
+</body>
+</html>
